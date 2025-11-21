@@ -4,6 +4,24 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $id_usuario = $_SESSION['id_usuario'] ?? null;
+$foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
+
+if ($id_usuario) {
+    $consulta_foto = "SELECT foto_perfil FROM usuarios WHERE id = ?";
+    $stmt = $mysqli->prepare($consulta_foto);
+    $stmt->bind_param("i", $id_usuario);
+    $stmt->execute();
+    $stmt->bind_result($foto);
+
+    if ($stmt->fetch()) {
+
+        if (!empty($foto)) {
+            $foto_perfil = $foto;
+        }
+    }
+
+    $stmt->close();
+}
 
 if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
     unset($_SESSION['email']);
@@ -42,4 +60,5 @@ $primeiroNome = explode(
 
 
 </html>
+
 
