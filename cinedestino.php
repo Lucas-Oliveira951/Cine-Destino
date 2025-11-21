@@ -8,7 +8,7 @@ $id_usuario = $_SESSION['id_usuario'] ?? null;
 if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
     unset($_SESSION['email']);
     unset($_SESSION['senha']);
-    header('Location: ../cadastro_de_usuarios.php/login.php');
+    header('Location: /cinedestino/cadastro_de_usuarios/login.php');
 }
 
 $logado = $_SESSION['email'];
@@ -35,7 +35,8 @@ $primeiroNome = explode(
 <body>
     <h1>logastes jovem <u><?= htmlspecialchars($primeiroNome) ?>!</u></h1>
 
-    <a href="sair.php">Sair</a>
+    <a href="../sair.php">Sair</a>
 </body>
+
 
 </html>
