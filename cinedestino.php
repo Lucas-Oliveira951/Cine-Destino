@@ -35,8 +35,11 @@ $primeiroNome = explode(
 <body>
     <h1>logastes jovem <u><?= htmlspecialchars($primeiroNome) ?>!</u></h1>
 
-    <a href="../sair.php">Sair</a>
+        <img src="../cinedestino/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" alt="foto de perfil" width="100px">
+
+    <a href="/cinedestino/cadastro_de_usuarios/sair.php">Sair</a>
 </body>
 
 
 </html>
+
