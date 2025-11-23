@@ -4,6 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $id_usuario = $_SESSION['id_usuario'] ?? null;
+
+
+//busca foto do usuario no banco de dados
 $foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
 
 if ($id_usuario) {
@@ -30,6 +33,8 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 }
 
 $logado = $_SESSION['email'];
+
+//pega apenas o primeiro nome do usuario
 $nome = $_SESSION['nome'] ?? 'Usuário';
 $nomeCompleto = $_SESSION['nome'] ?? '';
 $primeiroNome = explode(
@@ -60,5 +65,6 @@ $primeiroNome = explode(
 
 
 </html>
+
 
 
