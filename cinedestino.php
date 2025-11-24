@@ -34,7 +34,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
 $logado = $_SESSION['email'];
 
-//pega apenas o primeiro nome do usuario
+
 $nome = $_SESSION['nome'] ?? 'Usuário';
 $nomeCompleto = $_SESSION['nome'] ?? '';
 $primeiroNome = explode(
@@ -65,6 +65,7 @@ $primeiroNome = explode(
 
 
 </html>
+
 
 
 
