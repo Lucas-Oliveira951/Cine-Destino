@@ -3,10 +3,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+include("cadastro_de_usuarios/conexao.php");
+
 $id_usuario = $_SESSION['id_usuario'] ?? null;
-
-
-//busca foto do usuario no banco de dados
 $foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
 
 if ($id_usuario) {
@@ -33,8 +32,6 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 }
 
 $logado = $_SESSION['email'];
-
-
 $nome = $_SESSION['nome'] ?? 'Usuário';
 $nomeCompleto = $_SESSION['nome'] ?? '';
 $primeiroNome = explode(
@@ -52,20 +49,465 @@ $primeiroNome = explode(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine Destino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Cinedestino</title>
 </head>
 
 <body>
-    <h1>logastes jovem <u><?= htmlspecialchars($primeiroNome) ?>!</u></h1>
+    <header>
+        <!-- Menu Versão desktop-->
+        <nav class="menu">
+            <h1 class="titulo-principal">Cinedestino</h1>
+            <ul class="nav-list">
+                <li><a href="#" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
+                <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
+                <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
+                <li><a href="/cinedestino/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
+            </ul>
+            <img src="../cinedestino/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" class="foto_de_perfil" alt="foto de perfil">
+        </nav>
 
-        <img src="../cinedestino/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" alt="foto de perfil" width="100px">
+        <!-- Versão responsiva de menu para Tablets e celulares -->
 
-    <a href="/cinedestino/cadastro_de_usuarios/sair.php">Sair</a>
+        <button class="botao-menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="menu-lateral">
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-house"></i></a>Página Incial</li>
+                <li><a href="#"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
+                <li><a href="/cinedestino/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="background">
+
+    </div>
+
+    <main class="conteudo">
+        <div class="apresentacao">
+            <h1>Melhores Filmes Católicos para</h1>
+            <h3>
+                Assistir com a sua família</h3>
+            <div class="barra-de-pesquisa">
+                <div class="barra-input"><input type="search" name="Pesquisar" id="Pesquisar" placeholder="Pesquisar"><i
+                        class="fa-solid fa-magnifying-glass"></i></div>
+                <input type="button" value="Pesquisar" id="botao-pesquisa">
+            </div>
+
+        </div>
+
+        <!-- Catálogo principal de filmes  -->
+
+        <section class="secao-filmes">
+            <h1 class="secao-title">Lançamento</h1>
+
+            <article class="filmes">
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
+                            title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">Caminho da Luz</h1>
+                        <span class="filme-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/O Milagre em Roma.jpg" alt="O Milagre em Roma"
+                            title="O Milagre em Roma  (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">O Milagre em Roma</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/Chama do Perdão.jpg" alt="Chama do Perdão"
+                            title="Chama do Perdão (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">Chama do Perdão</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/O Peregrino de Assis.jpg" alt="O Peregrino de Assis"
+                            title="O Peregrino de Assis (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">O Peregrino de Assis</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/O Silêncio do Mosteiro.jpg" alt="O Silêncio do Mosteiro"
+                            title="O Silêncio do Mosteiro (Criado por Gemni IA e Chat GPT )">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">O Silêncio do Mosteiro</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!-- Mudança de cores no background-->
+
+        <section class="secao-filmes2">
+            <article class="filmes2">
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/Lágrimas de Esperança.jpg" alt="Lágrimas de Esperança"
+                            title="Lágrimas de Esperança (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">Lágrimas de Esperança</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/Sob o Manto da Virgem.jpg" alt="Sob o Manto da Virgem"
+                            title="Sob o Manto da Virgem (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">Sob o Manto da Virgem</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/As Pegadas de Pedro.jpg" alt="As Pegadas de Pedro"
+                            title="As Pegadas de Pedro (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">As Pegadas de Pedro</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/A Última Capela.jpg" alt="A Última Capela"
+                            title="A Última Capela (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">A Última Capela</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card">
+                    <div class="poster">
+                        <img src="assets/Image/Entre Rosários e Estrelas.jpg" alt="Entre Rosários e Estrelas"
+                            title="Entre Rosários e Estrelas (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">Entre Rosários e Estrelas</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Catálogo principal de filmes (Versão tablet e Mobile)-->
+
+        <!-- Parte 1 - background normal -->
+        <section class="secao-filmes-mobile">
+            <article class="filmes-mobile">
+                <div class="filme-card-mobile">
+                    <div class="poster-mobile">
+                        <img src="assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
+                            title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile">
+                        <h1 class="filme-title-mobile">Caminho da Luz</h1>
+                        <span class="filme-ano-mobile">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card-mobile">
+                    <div class="poster-mobile">
+                        <img src="assets/Image/O Milagre em Roma.jpg" alt="O Milagre em Roma"
+                            title="O Milagre em Roma  (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile">
+                        <h1 class="filme-title-mobile">O Milagre em Roma</h1>
+                        <span class="filmes-ano-mobile">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card-mobile">
+                    <div class="poster-mobile">
+                        <img src="assets/Image/Chama do Perdão.jpg" alt="Chama do Perdão"
+                            title="Chama do Perdão (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile">
+                        <h1 class="filme-title-mobile">Chama do Perdão</h1>
+                        <span class="filmes-ano-mobile">2025</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Parte 2 - background diferente -->
+
+        <section class="secao-filmes-mobile2">
+            <article class="filmes-mobile2">
+                <div class="filme-card-mobile2">
+                    <div class="poster-mobile2">
+                        <img src="assets/Image/O Peregrino de Assis.jpg" alt="O Peregrino de Assis"
+                            title="O Peregrino de Assis (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile2">
+                        <h1 class="filme-title-mobile2">O Peregrino de Assis</h1>
+                        <span class="filme-ano-mobile2">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card-mobile2">
+                    <div class="poster-mobile2">
+                        <img src="assets/Image/O Silêncio do Mosteiro.jpg" alt="O Silêncio do Mosteiro"
+                            title="O Silêncio do Mosteiro (Criado por Gemni IA e Chat GPT )">
+                    </div>
+                    <div class="filme-descricao-mobile2">
+                        <h1 class="filme-title-mobile2">O Silêncio do Mosteiro</h1>
+                        <span class="filmes-ano-mobile2">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card-mobile2">
+                    <div class="poster-mobile2">
+                        <img src="assets/Image/Lágrimas de Esperança.jpg" alt="Lágrimas de Esperança"
+                            title="Lágrimas de Esperança (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile2">
+                        <h1 class="filme-title-mobile2">Lágrimas de Esperança</h1>
+                        <span class="filmes-ano-mobile2">2025</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Parte 3 - background normal -->
+
+        <section class="secao-filmes-mobile">
+            <article class="filmes-mobile">
+                <div class="filme-card-mobile">
+                    <div class="poster-mobile">
+                        <img src="assets/Image/Sob o Manto da Virgem.jpg" alt="Sob o Manto da Virgem"
+                            title="Sob o Manto da Virgem (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile">
+                        <h1 class="filme-title-mobile">Sob o Manto da Virgem</h1>
+                        <span class="filme-ano-mobile">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card-mobile">
+                    <div class="poster-mobile">
+                        <img src="assets/Image/As Pegadas de Pedro.jpg" alt="As Pegadas de Pedro"
+                            title="As Pegadas de Pedro (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile">
+                        <h1 class="filme-title-mobile">As Pegadas de Pedro</h1>
+                        <span class="filmes-ano-mobile">2025</span>
+                    </div>
+                </div>
+
+                <div class="filme-card-mobile">
+                    <div class="poster-mobile">
+                        <img src="assets/Image/A Última Capela.jpg" alt="A Última Capela"
+                            title="A Última Capela (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao-mobile">
+                        <h1 class="filme-title-mobile">A Última Capela</h1>
+                        <span class="filmes-ano-mobile">2025</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Parte 4 - background diferente -->
+
+        <section class="secao-filmes-mobile3">
+            <article class="filmes-mobile3">
+                <div class="filme-card-mobile3">
+                    <div class="poster-mobile3 ">
+                        <img src="assets/Image/Entre Rosários e Estrelas.jpg" alt="Entre Rosários e Estrelas"
+                            title="Entre Rosários e Estrelas (Criado por Gemni IA e Chat GPT)">
+                    </div>
+                    <div class="filme-descricao">
+                        <h1 class="filme-title">Entre Rosários e Estrelas</h1>
+                        <span class="filmes-ano">2025</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Criador e créditos do site - Desktop versão -->
+
+        <footer class="informacoes">
+            <div class="informacoes-container">
+                <div class="info-title">Conecte-se conosco</div>
+                <div class="rede-sociais">
+                    <a href="#rede-sociais-mobile" class="icon insta"><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="#rede-sociais-mobile" class="icon face"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#rede-sociais-mobile" class="icon twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#rede-sociais-mobile" class="icon mail"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div class="info-link">
+                    <div class="info-coluna1">
+                        <a href="#info-coluna">Empregos</a>
+                        <a href="#info-coluna">Cookies e Preferências</a>
+                        <a href="#info-coluna">Central de Ajuda</a>
+                        <a href="#info-coluna">Termos de Uso</a>
+                        <a href="#info-coluna">Privacidade</a>
+                    </div>
+                    <div class="info-coluna">
+                        <a href="#info-coluna">Notícias</a>
+                        <a href="#info-coluna">Centro de mídia</a>
+                        <a href="#info-coluna">Aviso Legal</a>
+                        <a href="#info-coluna">Realização dos Investidores</a>
+                        <a href="#info-coluna">Feeds</a>
+                    </div>
+                    <div class="info-coluna">
+                        <a href="#info-coluna">Home</a>
+                        <a href="#info-coluna">Popular filmes</a>
+                        <a href="#info-coluna">Trending filmes</a>
+                        <a href="#info-coluna">Latest filmes</a>
+                        <a href="#info-coluna">About us</a>
+                    </div>
+                </div>
+                <p>&copy;Raphael Antônio & Lucas Batista</p>
+                <p>Criado por Raphael Antônio & Lucas Batista</p>
+            </div>
+        </footer>
+
+        <!-- mobile - tablet -->
+
+        <footer class="informacoes-tablet">
+            <div class="informacoes-container-tablet">
+
+                <!-- COLUNA 1 -->
+                <div class="rede-sociais-mobile-container">
+                    <div class="info-title-tablet">Conecte-se conosco</div>
+
+                    <div class="rede-sociais-tablet">
+                        <a href="#rede-sociais-mobile" class="icon insta"><i
+                                class="fa-brands fa-square-instagram"></i></a>
+                        <a href="#rede-sociais-mobile" class="icon face"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#rede-sociais-mobile" class="icon twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#rede-sociais-mobile" class="icon mail"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+
+                    <ul>
+                        <li class="services"><a href="#services">Home</a></li>
+                        <li class="services"><a href="#services">Popular filmes</a></li>
+                        <li class="services"><a href="#services">Trending filmes</a></li>
+                        <li class="services"><a href="#services">Latest filmes</a></li>
+                        <li class="services"><a href="#services">About us</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUNA 2 -->
+                <div class="footer-col">
+                    <ul>
+                        <li><a href="#footer-col">Empregos</a></li>
+                        <li><a href="#footer-col">Cookies & Preferências</a></li>
+                        <li><a href="#footer-col">Central de Ajuda</a></li>
+                        <li><a href="#footer-col">Termos de Uso</a></li>
+                        <li><a href="#footer-col">Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUNA 3 -->
+                <div class="footer-col">
+                    <ul>
+                        <li><a href="#footer-col">Notícias</a></li>
+                        <li><a href="#footer-col">Centro de mídia</a></li>
+                        <li><a href="#footer-col">Aviso Legal</a></li>
+                        <li><a href="#footer-col">Investidores</a></li>
+                        <li><a href="#footer-col">Feeds</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy;Raphael Antônio & Lucas Batista</p>
+                <p>Criado por Raphael Antônio & Lucas Batista</p>
+            </div>
+        </footer>
+
+        <!-- Footer versão (Mobile)-->
+
+        <footer class="footer-mobile">
+
+            <div class="info-social-mobile">
+                <div class="info-title-mobile">Conecte-se conosco</div>
+
+                <div class="info-rede-mobile">
+                    <a href="#footer-icons-mobile" class="icon insta"><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="#footer-icons-mobile" class="icon face"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#footer-icons-mobile" class="icon twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#footer-icons-mobile" class="icon mail"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+
+                <!-- COLUNA 1 -->
+                <ul class="coluna-vertical">
+                    <li><a href="#">Empregos</a></li>
+                    <li><a href="#">Cookies e Preferências</a></li>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+
+                <!-- COLUNA 2 -->
+                <ul class="coluna-vertical">
+                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Centro de mídia</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Realização dos Investidores</a></li>
+                    <li><a href="#">Feeds</a></li>
+                </ul>
+
+                <!-- COLUNA 3 (HORIZONTAL) -->
+                <ul class="coluna-horizontal">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Popular filmes</a></li>
+                    <li><a href="#">Trending filmes</a></li>
+                    <li><a href="#">Latest filmes</a></li>
+                    <li><a href="#">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-copy">
+                <p>&copy;Raphael Antônio & Lucas Batista</p>
+                <p>Criado por Raphael Antônio & Lucas Batista</p>
+            </div>
+        </footer>
+    </main>
 </body>
-
+<script src="assets/JavaScript/script.js"></script>
 
 </html>
-
-
-
-
