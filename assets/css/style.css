@@ -1,1 +1,1035 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+:root {
+    --primary-color: #0B0B0B;
+    --secundary-color: #1C1C1C;
+    --text-color: #E4D6A9;
+    --tercery-color: #650207;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+/* Menu versão Desktop*/
+body {
+    background-image: url(../Image/background.jpg);
+    background-repeat: no-repeat;
+    background-color: var(--secundary-color);
+    transition: background-color 0.5s ease;
+}
+
+header {
+    padding-inline: 16px;
+}
+
+.titulo-principal {
+    color: var(--text-color);
+    margin: 20px 7%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.nav-list {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    list-style: none;
+    color: var(--text-color);
+    padding: 20px 7%;
+}
+
+.item-list {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.item-list:hover {
+    color: var(--secundary-color);
+    background-color: var(--text-color);
+    border-radius: 30px;
+    padding: 20px;
+    transition: 1s ease;
+}
+
+.botao-login {
+    background-color: var(--tercery-color);
+    padding: 15px 50px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.botao-login:hover {
+    background-color: var(--secundary-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    transition: 1s ease;
+}
+
+.foto_de_perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-left: 16px;
+  object-fit: cover;
+  border: none;
+}
+
+/* menu versão responsiva (Tablet e Celulares)*/
+
+.menu-lateral {
+    display: none;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    color: var(--text-color);
+    background-color: var(--secundary-color);
+    z-index: 2;
+    box-shadow: 5px 5px 5px var(--secundary-color);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-lateral.ativo {
+    right: 0;
+
+}
+
+.menu-lateral ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 60px;
+}
+
+.menu-lateral ul li {
+    padding: 15px 30px;
+}
+
+.menu-lateral ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-lateral ul li a:hover {
+    color: var(--secundary-color);
+    transition: 1s ease;
+    padding: 20px;
+}
+
+.menu-lateral ul li a i {
+    font-size: 24px;
+
+}
+
+.menu-lateral ul li:hover {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+    transform: 0.5s;
+}
+
+.menu-lateral ul li a i:hover {
+    transform: translateX(5px) rotate(5deg);
+    color: var(--secundary-color);
+}
+
+.botao-menu {
+    display: none;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 3;
+    border-radius: 5px;
+    font-size: 24px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.botao-menu:hover {
+    background-color: var(--text-color);
+    color: var(--secundary-color);
+    transition: 1s;
+}
+
+.botao-menu.ativo {
+    right: 320px;
+}
+
+.conteudo {
+    transition: all 0.5s ease;
+    height: 100vh;
+}
+
+body.ativo {
+    background-color: var(--secundary-color);
+}
+
+.conteudo.ativo {
+    margin-right: 320px;
+}
+
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.753);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 4;
+}
+
+.background.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Barra de pesquisa (area) */
+.apresentacao {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin-left: 27%;
+    margin-right: 20%;
+    margin-top: 40vh;
+    color: var(--text-color);
+}
+
+.apresentacao h1 {
+    font-size: 40px;
+}
+
+.apresentacao h3 {
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.barra-de-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.barra-input {
+    position: relative;
+    width: 100%;
+}
+
+.barra-input i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+#Pesquisar {
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    padding: 12px 40px 12px 15px;
+    width: 100%;
+    border: 2px solid var(--text-color);
+    border-radius: 15px;
+}
+
+#botao-pesquisa {
+    padding: 17px 30px;
+    background-color: var(--tercery-color);
+    color: white;
+    border-radius: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+#botao-pesquisa:hover {
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    transition: 1s ease;
+}
+
+
+
+/* Catálogo principal de filmes */
+.secao-filmes {
+    padding: 24px;
+    padding-left: 7%;
+    margin-top: 40%;
+}
+
+.secao-title {
+    color: var(--text-color);
+    background-color: var(--secundary-color);
+    font-size: 40px;
+    margin: 8px 0 2%;
+    font-weight: 600;
+}
+
+.filmes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    height: 55vh;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+}
+
+/* Mudança de cores no background */
+.secao-filmes2 {
+    padding: 24px;
+    padding-left: 7%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.filmes2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 87vh;
+
+}
+
+.filme-card {
+    background: transparent;
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.poster {
+    width: 100%;
+    overflow: hidden;
+}
+
+.poster img {
+    width: 80%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 2/3;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px var(--primary-color);
+}
+
+.filme-descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filme-title {
+    font-size: 25px;
+}
+
+.filmes-ano {
+    font-size: 15px
+}
+
+/* Catálogo principal de filmes (Versão tablet e Mobile) */
+
+/* Parte 1 - background normal */
+
+.secao-filmes-mobile {
+    display: none;
+}
+
+.filmes-mobile {
+    display: none;
+}
+
+.filme-card-mobile {
+    display: none;
+}
+
+/* Parte 2 - background diferente */
+
+.secao-filmes-mobile2 {
+    display: none;
+}
+
+.filmes-mobile2 {
+    display: none;
+}
+
+.filme-card-mobile2 {
+    display: none;
+}
+
+/* Parte 3 - background diferente */
+
+.secao-filmes-mobile3 {
+    display: none;
+}
+
+.filmes-mobile3 {
+    display: none;
+}
+
+.filme-card-mobile3 {
+    display: none;
+}
+
+/* Criador e créditos do site*/
+
+.informacoes {
+    color: var(--text-color);
+    padding: 40px 60px;
+}
+
+.info-link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+.info-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.rede-sociais {
+    display: flex;
+    gap: 40px;
+}
+
+.rede-sociais .rede {
+    display: flex;
+    flex-direction: column;
+}
+
+.rede {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.rede a {
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-weight: 500;
+    padding: 20px;
+    border-radius: 30px;
+    border: 2px solid #7C838A;
+}
+
+.rede i {
+    font-size: 14px;
+
+}
+
+.info-coluna1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-coluna1 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.info-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.info-coluna a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* mobile versão */
+
+.informacoes-tablet {
+    display: none;
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.insta i {
+    background: linear-gradient(45deg, #feda75, #d62976, #962fbf);
+    background-clip: text;
+    color: transparent;
+}
+
+.face i {
+    color: #0075FF;
+}
+
+.twitter i {
+    color: #00B2FF;
+}
+
+.mail i {
+    color: #FF0303;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+
+/*Footer versão (Mobile)*/
+
+.footer-mobile {
+    display: none;
+}
+
+/* Versão para Tablets */
+@media (min-width: 710px) and (max-width: 1133px) {
+
+    /* Menu versão Tablets*/
+    body {
+        background-image: url(../Image/Background\ -\ tablet\ version.jpg);
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .botao-menu {
+        display: block;
+    }
+
+    .menu-lateral {
+        display: block;
+    }
+
+    .apresentacao {
+        margin-left: 5%;
+        margin-right: 20%;
+    }
+
+    /* Catálogo principal de filmes - Versão de Desktop  */
+
+    .secao-filmes {
+        margin-top: 55%;
+    }
+
+    .filmes {
+        display: none;
+    }
+
+    .filmes-card {
+        display: none;
+    }
+
+
+    .secao-filmes2 {
+        display: none;
+    }
+
+    .filmes2 {
+        display: none;
+    }
+
+    /* Catálogo principal de filmes (Versão tablet e Mobile) */
+
+    /* Parte 1 - background normal */
+
+    .secao-filmes-mobile {
+        display: block;
+        color: var(--text-color);
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .filmes-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile h1 {
+        font-size: 25px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /* Parte 2 - background diferente */
+
+    .secao-filmes-mobile2 {
+        display: block;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        width: 90%;
+        padding: 36px;
+    }
+
+    .filmes-mobile2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile2 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile2 h1 {
+        font-size: 25px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile2 span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /* Parte 3 - background diferente */
+    .secao-filmes-mobile3 {
+        display: flex;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        padding: 36px;
+    }
+
+    .filmes-mobile3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile3 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile3 h1 {
+        font-size: 25px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile3 span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /* Criador e créditos do site - Desktop versão*/
+
+    .informacoes {
+        display: none;
+    }
+
+    /* mobile versão */
+    .footer-mobile {
+        display: none;
+    }
+
+    /*Versão tablet */
+    .informacoes-tablet {
+        display: block;
+    }
+
+    .informacoes-container-tablet {
+        background-color: #1d1d1d;
+        padding: 40px;
+        color: var(--text-color);
+    }
+
+    .info-title-tablet {
+        font-size: 30px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .informacoes-container-tablet {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .footer-col h3 {
+        font-size: 14px;
+        margin-bottom: 15px;
+        color: #d6caa2;
+    }
+
+    /* LISTAS DO FOOTER */
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+        text-decoration: none;
+        color: #d6caa2;
+        transition: 0.2s ease;
+    }
+
+    .footer-col ul li a:hover {
+        color: #ffffff;
+    }
+
+    /* ícone das redes sociais */
+
+    .rede-sociais-tablet {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+
+
+    .services {
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+    }
+
+    .services a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+
+    /* TEXTO FINAL */
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .footer-bottom p {
+        margin: 5px 0;
+        color: #d6caa2;
+    }
+
+}
+
+/* Responsividade mobile */
+@media (min-width: 370px) and (max-width: 710px) {
+    body {
+        background-image: url(../Image/Background\ -\ mobile\ version.jpg);
+    }
+
+    .apresentacao h1 {
+        font-size: 28px;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .botao-menu {
+        display: block;
+    }
+
+    .menu-lateral {
+        display: block;
+    }
+
+    .apresentacao {
+        margin-top: 5vh;
+        margin-left: 8%;
+        margin-right: 16%;
+    }
+
+    .apresentacao h3 {
+        margin-bottom: 90%;
+        font-size: 20px;
+    }
+
+    .barra-de-pesquisa {
+        flex-direction: column;
+    }
+
+    #botao-pesquisa {
+        margin-top: 43px;
+    }
+
+    /* Catálogo principal de filmes - Versão de Desktop  */
+
+    .secao-filmes {
+        margin-top: 55%;
+    }
+
+    .filmes {
+        display: none;
+    }
+
+    .filmes-card {
+        display: none;
+    }
+
+
+    .secao-filmes2 {
+        display: none;
+    }
+
+    .filmes2 {
+        display: none;
+    }
+
+    .secao-filmes {
+        display: none;
+    }
+
+    /* Parte 1 - background normal */
+
+    .secao-filmes-mobile {
+        display: block;
+        color: var(--text-color);
+        width: 90%;
+        margin: 78px auto;
+    }
+
+    .filmes-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile h1 {
+        font-size: 13px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile span {
+        font-size: 11px;
+        opacity: 0.7;
+    }
+
+    /* Parte 2 - background diferente */
+
+    .secao-filmes-mobile2 {
+        display: block;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        padding: 40px;
+    }
+
+    .filmes-mobile2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile2 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile2 h1 {
+        font-size: 13px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile2 span {
+        font-size: 11px;
+        opacity: 0.7;
+    }
+
+    /* Parte 3 - background diferente */
+    .secao-filmes-mobile3 {
+        display: flex;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .filmes-mobile3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile3 img {
+        width: 60%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile3 h1 {
+        font-size: 13px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile3 span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /*Footer versão (Desktop)*/
+
+    .informacoes {
+        display: none;
+    }
+
+    /*Footer versão (Tablet)*/
+    .informacoes-tablet {
+        display: none;
+    }
+
+    /*Footer versão (Mobile)*/
+    .footer-mobile {
+        display: block;
+        padding: 40px 20px;
+    }
+
+    .info-title-mobile {
+        color: var(--text-color);
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    .info-rede-mobile {
+        display: flex;
+        gap: 15px;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .coluna-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .coluna-vertical li {
+        list-style: none;
+    }
+
+    .coluna-horizontal {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .coluna-horizontal li {
+        list-style: none;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    .footer-links a:hover {
+        color: var(--text-color);
+    }
+
+    .footer-copy {
+        color: var(--text-color);
+        margin-top: 50px;
+    }
+
+
+}
