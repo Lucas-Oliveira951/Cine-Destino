@@ -1,12 +1,8 @@
 SISTEMA DE CADASTRO E LOGIN DE USUÁRIO
- 
- 
-O sistema permite que novos usuários realizem um cadastro fornecendo qualquer endereço de e-mail, uma senha e uma foto de perfil. Durante o processo de registro, a senha não é armazenada em texto puro; em vez disso, o sistema utiliza a função password_hash do PHP, que aplica um algoritmo seguro de criptografia (como bcrypt) para gerar um hash único e protegido. Esse hash é o que é salvo no banco de dados, garantindo maior segurança.
-No momento do login, o usuário informa e-mail e senha. O sistema então recupera o hash correspondente e utiliza a função password_verify para comparar a senha digitada com o hash armazenado. Se a verificação for bem-sucedida, o acesso é liberado e o usuário pode navegar autenticado.
-A foto de perfil é enviada pelo usuário no cadastro e armazenada em uma pasta do servidor, enquanto o caminho do arquivo fica registrado no banco de dados. Assim, o sistema identifica e exibe a imagem sempre que o usuário estiver logado. Caso o usuário não definir uma foto de perfil, o sistema automaticamente definirá uma imagem padrão para a conta.
+
+O sistema permite que novos usuários se cadastrem informando qualquer endereço de e-mail, uma senha e uma foto de perfil. Para garantir a segurança dos dados, a senha nunca é armazenada em texto puro: o sistema utiliza a função password_hash, que aplica um algoritmo seguro de criptografia bcrypt e salva apenas o hash no banco de dados.
+No processo de login, o usuário informa e-mail e senha. O sistema recupera o hash correspondente e utiliza password_verify para comparar a senha digitada com o hash armazenado. Se a verificação for válida, o usuário é autenticado. E se o e-mail ou a senha forem preenchidos de maneira incorreta, o sistema redireciona o usuário de volta para a página de login
+A foto de perfil enviada no cadastro é salva diretamente em uma pasta dentro do próprio projeto. Apenas o caminho do arquivo é armazenado no banco de dados, o que permite que o sistema recupere e exiba a imagem sempre que o usuário estiver logado. Caso o usuário não definir uma foto de perfil, o sistema automaticamente definirá uma imagem padrão para a conta.
 
 
-
-BUGS PARA RESOLVER:
-
--Na versão mobile o ícone de menu está se sobrepondo a foto de perfil
+Dessa forma, o sistema oferece um processo de autenticação seguro, organizado e funcional, combinando criptografia de senha, gerenciamento de imagens e controle de acesso.
