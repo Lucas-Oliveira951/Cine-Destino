@@ -22,12 +22,12 @@ if (isset($_POST['email'])) {
 
         echo "Logado com sucesso!";
 
-        header('Location: ../cinedestino.php');
-        exit;
+        header('Location: login.php?sucesso=1');
+        //exit;
     } else {
         echo "Falha ao logar!";
 
-        header('Location: login.php');
+        header('Location: login.php?erro=1');
         exit;
     }
 } else {
