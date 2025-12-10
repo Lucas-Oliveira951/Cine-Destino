@@ -28,7 +28,7 @@ if ($id_usuario) {
 if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
     unset($_SESSION['email']);
     unset($_SESSION['senha']);
-    header('Location: /cinedestino/cadastro_de_usuarios/login.php');
+    header('Location: /Cinedestino-main/cadastro_de_usuarios/login.php');
 }
 
 $logado = $_SESSION['email'];
@@ -52,6 +52,7 @@ $primeiroNome = explode(
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="/Cinedestino-main/assets/Image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Cinedestino</title>
 </head>
@@ -65,9 +66,9 @@ $primeiroNome = explode(
                 <li><a href="#" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
-                <li><a href="/cinedestino/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
+                <li><a href="/Cinedestino-main/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
-            <img src="../cinedestino/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" class="foto_de_perfil" alt="foto de perfil">
+            <img src="../Cinedestino-main/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
 
         <!-- Versão responsiva de menu para Tablets e celulares -->
@@ -80,7 +81,7 @@ $primeiroNome = explode(
                 <li><a href="#"><i class="fa-solid fa-house"></i></a>Página Incial</li>
                 <li><a href="#"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
-                <li><a href="/cinedestino/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
+                <li><a href="/Cinedestino-main/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
 
         </nav>
